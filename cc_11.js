@@ -26,7 +26,36 @@ console.log(book1.getDetails());
 book1.updateCopies(-1);
 console.log(book1.getDetails());
 
+//Task 2: Creating a Borrower Class
 
+//Create a class Borrower with properties
+class Borrower {
+    constructor(name, borrowerId) {
+      this.name = name;
+      this.borrowerId = borrowerId;
+      this.borrowedBooks = [];
+    };
+  
+//Add a method borrowBook(book) that adds a book title to borrowedBooks
+    borrowBook(book) {
+      this.borrowedBooks.push(book);
+    };
+  
+//Add a method returnBook(book) that removes the book from borrowedBooks
+    returnBook(book) {
+      const index = this.borrowedBooks.indexOf(book);
+      if (index !== -1) {
+        this.borrowedBooks.splice(index, 1);
+        };
+    };
+};
+
+//Test cases for task 2
+const borrower1 = new Borrower("Alice Johnson", 201);
+borrower1.borrowBook("The Great Gatsby");
+console.log(borrower1.borrowedBooks);
+borrower1.returnBook("The Great Gatsby");
+console.log(borrower1.borrowedBooks);
 
 
 
