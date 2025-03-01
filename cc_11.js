@@ -81,8 +81,19 @@ class Library {
     lendBook(borrowerId, isbn) {
         let book = this.books.find(book => book.isbn === isbn);
         let borrower = this.borrowers.find(book => book.borrowerId === borrowerId)
+    };
 
-    }
+//Task 5: Implementing Book Returns
+
+//Add a method returnBook(borrowerId, isbn) in the Library class
+returnBook(borrowerId, isbn) {
+    const book = this.books.find(book => book.isbn === isbn);
+    const borrower = this.borrowers.find(book => book.borrowerId === borrowerId);
+
+    if (!book || !borrower) return;
+    book.copies += 1;
+    borrower.returnBook(book.title);
+};
 };
 
 //Test cases for task 3
@@ -95,5 +106,7 @@ library.lendBook(201, 123456);
 console.log(book1.getDetails());
 console.log(borrower1.borrowedBooks);
 
-
-
+//Test cases for task 5
+library.returnBook(201, 123456);
+console.log(book1.getDetails());
+console.log(borrower1.borrowedBooks);
