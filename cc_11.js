@@ -74,12 +74,26 @@ class Library {
     listBooks() {
         this.books.forEach(book => console.log(book.getDetails()));
     };
+
+//Task 4: Implementing Book Borrowing
+
+//Add a method lendBook(borrowerId, isbn) in the Library class
+    lendBook(borrowerId, isbn) {
+        let book = this.books.find(book => book.isbn === isbn);
+        let borrower = this.borrowers.find(book => book.borrowerId === borrowerId)
+
+    }
 };
 
 //Test cases for task 3
 const library = new Library();
 library.addBook(book1);
 library.listBooks();
+
+//Test cases for task 4
+library.lendBook(201, 123456);
+console.log(book1.getDetails());
+console.log(borrower1.borrowedBooks);
 
 
 
